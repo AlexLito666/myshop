@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     re_path(r'^$', views.index, name='index'),
-    path('product_list', views.product_list, name='product_list'),
+    path('category/<slug:category_slug>/', views.category_list, name='category_list'),
     path('product_detail/<slug:product_detail_slug>/', views.product_detail, name='product_detail'),
 
     # url(r'^$', views.product_list, name='product_list'),
@@ -16,3 +16,4 @@ urlpatterns = [
 
 
 ]
+#TODO: что то не так с категорией
