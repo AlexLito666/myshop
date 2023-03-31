@@ -11,15 +11,18 @@ def index(request):
 
 # предствление катеuории товара
 def category_list(request, category_slug=None):
+    global count
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
+        count = len(products)
     context_dict = {'category': category,
                     'categories': categories,
-                    'products': products}
+                    'products': products,
+                    'count': count}
     return render(request, 'shop/category_list.html', context_dict)
 
 

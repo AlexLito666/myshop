@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Regular Static</title>
+<title>{% block title %}{% endblock %}</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="OneTech shop project">
@@ -25,7 +25,7 @@
 {#<link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">#}
 <link rel="stylesheet" type="text/css" href = "{% static "css/regular_styles.css"%}">
 <link rel="stylesheet" type="text/css" href = "{% static "css/regular_responsive.css"%}">
-
+{% block link %} {% endblock link %}
 
 </head>
 
@@ -138,7 +138,7 @@
 									</div>
 									<div class="cart_content">
 										<div class="cart_text"><a href="#">Корзина</a></div>
-										<div class="cart_price">$85</div>
+										<div class="cart_price">0</div>
 									</div>
 								</div>
 							</div>
@@ -165,46 +165,22 @@
 									<div class="cat_menu_text">категории</div>
 								</div>
 
-								<ul class="cat_menu">
-									<li><a href="#">Худи<i class="fas fa-chevron-right ml-auto"></i></a></li>
-									<li><a href="#">Футболка<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Кепка<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">#5<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">#6<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">#7<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">#8<i class="fas fa-chevron-right"></i></a></li>
-                                    <li class="hassubs">
-										<a href="#">#9 выпадающее меню<i class="fas fa-chevron-right"></i></a>
-										<ul>
-											<li class="hassubs">
-												<a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-												<ul>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-												</ul>
-											</li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-										</ul>
-									</li>
-								</ul>
+                                {% block menu_category %}
+                                {% endblock %}
 							</div>
 
 							<!-- Main Nav Menu -->
 
 							<div class="main_nav_menu ml-auto">
 								<ul class="standard_dropdown main_nav_dropdown">
-									<li><a href="index.html">Главная<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href={% url 'index' %}>Главная<i class="fas fa-chevron-down"></i></a></li>
 									<li><a href="#">Акции<i class="fas fa-chevron-down"></i></a></li>
 									<li><a href="blog.html">Блог<i class="fas fa-chevron-down"></i></a></li>
 									<li><a href="contact.html">Контакты<i class="fas fa-chevron-down"></i></a></li>
 								</ul>
 							</div>
 
-							<!-- Menu Trigger -->
+							<!-- Menu Trigger ?????-->
 
 							<div class="menu_trigger_container ml-auto">
 								<div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
@@ -221,95 +197,12 @@
 			</div>
 		</nav>
 
-		<!-- Menu -->
+			</header>
 
-		<div class="page_menu">
-			<div class="container">
-				<div class="row">
-					<div class="col">
+{# Основной контент страницы<#}
+{% block content %}
 
-						<div class="page_menu_content">
-
-							<div class="page_menu_search">
-								<form action="#">
-									<input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
-								</form>
-							</div>
-							<ul class="page_menu_nav">
-								<li class="page_menu_item has-children">
-									<a href="#">Language<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">English<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Italian<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Spanish<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Japanese<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Currency<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">US Dollar<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">EUR Euro<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">GBP British Pound<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item">
-									<a href="index.html">Home<i class="fa fa-angle-down"></i></a>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
-										<li class="page_menu_item has-children">
-											<a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
-											<ul class="page_menu_selection">
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-												<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-											</ul>
-										</li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item has-children">
-									<a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
-									<ul class="page_menu_selection">
-										<li><a href="#">Trending Styles<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-										<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-									</ul>
-								</li>
-								<li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
-								<li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
-							</ul>
-
-							<div class="menu_contact">
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+38 068 005 3570</div>
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</header>
-
-<h2> Основной контент страницы</h2>
+{% endblock %}
 
 	<!-- Newsletter -->
 

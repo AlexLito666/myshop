@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Главная{% endblock %}
-{% block content %}
-<h1>главная страница</h1>
-
+{% block menu_category %}
+    <ul class="cat_menu">
     {% for category in categories %}
-        <ul>
-            <li><a href="{{ category.get_absolute_url}}">{{category.name}}</a>  </li>
-        </ul>
+            <li><a href="{{ category.get_absolute_url}}">{{category.name}} <i class="fas fa-chevron-right"></i></a> </li>
     {% endfor %}
+    </ul>
+{% endblock menu_category%}
+
+{% block content %}
+
 {% endblock %}
+
