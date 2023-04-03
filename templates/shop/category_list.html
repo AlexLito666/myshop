@@ -2,22 +2,57 @@
 {% load static %}
 {% block link %}<link rel="stylesheet" type="text/css" href = "{% static "css/shop_styles.css"%}"> {% endblock link %}
 {% block title %}{{ category.name }}{% endblock %}
-{#{% block content %}#}
-{#    {% for product in products %}#}
-{#        <ul>#}
-{#        <li><a href = "{{ product.get_absolute_url }}">{{ product.name }} - {{ product.price }} ₽</a></li>#}
-{#        </ul>#}
-{#    {% endfor %}#}
-{#{% endblock %}#}
-
 <!-- Shop -->
 {% block content %}
+    <div class ='super_container'>
 	<div class="shop">
 		<div class="container">
 			<div class="row">
+                <div class="col-lg-3">
 
-                <div class="shop_sidebar">
-                </div>
+					<!-- Shop Sidebar -->
+					<div class="shop_sidebar">
+						<div class="sidebar_section">
+							<div class="sidebar_title">Категории</div>
+							<ul class="sidebar_categories">
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+							</ul>
+						</div>
+						<div class="sidebar_section filter_by_section">
+							<div class="sidebar_title">Фильтр</div>
+							<div class="sidebar_subtitle">Цена</div>
+							<div class="filter_price">
+								<div id="slider-range" class="slider_range"></div>
+								<p>Диапазон: </p>
+								<p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
+							</div>
+						</div>
+						<div class="sidebar_section">
+							<div class="sidebar_subtitle color_subtitle">Цвет</div>
+							<ul class="colors_list">
+								<li class="color"><a href="#" style="background: #b19c83;"></a></li>
+								<li class="color"><a href="#" style="background: #000000;"></a></li>
+								<li class="color"><a href="#" style="background: #999999;"></a></li>
+								<li class="color"><a href="#" style="background: #0e8ce4;"></a></li>
+								<li class="color"><a href="#" style="background: #df3b3b;"></a></li>
+								<li class="color"><a href="#" style="background: #ffffff; border: solid 1px #e1e1e1;"></a></li>
+							</ul>
+						</div>
+						<div class="sidebar_section">
+							<div class="sidebar_subtitle brands_subtitle">Бренды</div>
+							<ul class="brands_list">
+								<li class="brand"><a href="#">1</a></li>
+								<li class="brand"><a href="#">2</a></li>
+								<li class="brand"><a href="#">3</a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
 
 				<div class="col-lg-9">
 
@@ -42,12 +77,12 @@
 						</div>
 
 						<div class="product_grid">
-							<div class="product_grid_border"></div>
+{#							<div class="product_grid_border"></div>#}
 
                             {% for product in products %}
 							<!-- Product Item -->
 							<div class="product_item is_new">
-								<div class="product_border"></div>
+{#								<div class="product_border"></div>#}
                                 <ul>
                                 <li>
 								<div class="product_image d-flex flex-column align-items-center justify-content-center">
@@ -86,4 +121,6 @@
 			</div>
 		</div>
 	</div>
+    </div>
+    </div>
 {% endblock %}
