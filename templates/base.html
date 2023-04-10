@@ -1,18 +1,5 @@
 {#<!DOCTYPE html>#}
 {% load static %}
-{#<html lang="en">#}
-{#<head>#}
-{#    <meta charset="utf-8"/>#}
-{#    <title>{% block title %}{% endblock %}</title>#}
-{#    <link href="{% static "css/base.css" %}" rel="stylesheet">#}
-{#</head>#}
-{#<body>#}
-{#    {% block content %}#}
-{#    {% endblock %}#}
-{#</body>#}
-{#</html>#}
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,8 +30,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col d-flex flex-row">
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div>+7 908 475 84 **</div>
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">lito66@mail.ru</a></div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{% static 'images/phone.png'%}" alt=""></div>+7 908 475 84 **</div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{% static 'images/mail.png'%}" alt=""></div><a href="mailto:fastsales@gmail.com">lito66@mail.ru</a></div>
 						<div class="top_bar_content ml-auto">
 {#							<div class="top_bar_menu">#}
 {#								<ul class="standard_dropdown top_bar_dropdown">#}
@@ -67,9 +54,20 @@
 {#								</ul>#}
 {#							</div>#}
 							<div class="top_bar_user">
-								<div class="user_icon"><img src="images/user.svg" alt=""></div>
-								<div><a href="#">Регистрация</a></div>
-								<div><a href="#">Вход</a></div>
+{#								<div class="user_icon"><img src="{% static 'images/user.png'%}" alt=""></div>#}
+
+                                {% if user.is_authenticated %}
+                                         <div>
+                                             <a  href="{% url 'profile' %}">профиль  </a> |
+                                             <a  href="{% url 'logout' %}"> выход</a></div>
+                                            <h4> {{ user.username }}</h4>
+                                {% else %}
+                                        <div><a href="{% url 'login' %}">вход</a> |
+                                        <a  href="{% url 'register' %}">регистрация</a></div>
+                                {% endif %}
+
+
+
 							</div>
 						</div>
 					</div>
@@ -111,7 +109,7 @@
 												</ul>
 											</div>
 										</div>
-										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="images/search.png" alt=""></button>
+										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="{% static "images/search.png" %}" alt=""></button>
 									</form>
 								</div>
 							</div>
@@ -122,9 +120,9 @@
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
 						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
 							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
-								<div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
+								<div class="wishlist_icon"><img src="{% static "images/heart.png" %}" alt=""></div>
 								<div class="wishlist_content">
-									<div class="wishlist_text"><a href="#">Желания</a></div>
+									<div class="wishlist_text"><a href="{% url 'wishlist' %}">Желания</a></div>
 									<div class="wishlist_count">0</div>
 								</div>
 							</div>
@@ -133,11 +131,12 @@
 							<div class="cart">
 								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
 									<div class="cart_icon">
-										<img src="images/cart.png" alt="">
+										<img src="{% static "images/cart.png" %}" alt="">
+
 										<div class="cart_count"><span>10</span></div>
 									</div>
 									<div class="cart_content">
-										<div class="cart_text"><a href="#">Корзина</a></div>
+										<div class="cart_text"><a href="{% url 'cart' %}">Корзина</a></div>
 										<div class="cart_price">0</div>
 									</div>
 								</div>
@@ -212,7 +211,7 @@
 				<div class="col">
 					<div class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
 						<div class="newsletter_title_container">
-							<div class="newsletter_icon"><img src="images/send.png" alt=""></div>
+							<div class="newsletter_icon"><img src="{% static 'images/send.png'%}" alt=""></div>
 							<div class="newsletter_title">Подписаться на рассылку</div>
 						</div>
 						<div class="newsletter_content clearfix">
@@ -273,16 +272,17 @@
 			</div>
 	</footer>
 
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/greensock/TweenMax.min.js"></script>
-<script src="plugins/greensock/TimelineMax.min.js"></script>
-<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="plugins/greensock/animation.gsap.min.js"></script>
-<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="js/regular_custom.js"></script>
+<script src={% static "js/jquery-3.3.1.min.js"%}></script>
+<script src={% static "styles/bootstrap4/popper.js"%}></script>
+<script src={% static "styles/bootstrap4/bootstrap.min.js"%}></script>
+<script src={% static "plugins/greensock/TweenMax.min.js"%}></script>
+<script src={% static "plugins/greensock/TimelineMax.min.js"%}></script>
+<script src={% static "plugins/scrollmagic/ScrollMagic.min.js"%}></script>
+<script src={% static "plugins/greensock/animation.gsap.min.js"%}></script>
+<script src={% static "plugins/greensock/ScrollToPlugin.min.js"%}></script>
+<script src={% static "plugins/easing/easing.js"%}></script>
+<script src={% static "js/regular_custom.js"%}></script>
+</div>
 </body>
 
 </html>

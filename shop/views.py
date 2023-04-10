@@ -33,3 +33,13 @@ def product_detail(request, product_detail_slug):
                                 available=True)
     context_dict = {'product': product}
     return render(request, 'shop/product_detail.html', context_dict)
+
+
+def cart(request):
+    context_dict = {}
+    return render(request, 'shop/cart.html', context_dict)
+
+
+def wishlist(request):
+    context_dict = {}
+    return render(request, 'shop/wishlist.html', context_dict)
