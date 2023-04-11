@@ -132,13 +132,20 @@
 								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
 									<div class="cart_icon">
 										<img src="{% static "images/cart.png" %}" alt="">
+                                        {% with total_items=cart|length %}
+                                            {% if cart|length > 0 %}
+                                                   <div class="cart_count"><span> {{ total_items }}</span></div></div>
+                                                    <div class="cart_content">
+										            <div class="cart_text"><a href="{% url 'cart:cart_detail' %}">Корзина</a></div>
+										            <div class="cart_price">{{ cart.get_total_price }}₽</div>
+									        {% else %}
+                                                0
+                                            {% endif %}
+                                        {% endwith %}
 
-										<div class="cart_count"><span>{% block cart_q %} {% endblock %}</span></div>
+
 									</div>
-									<div class="cart_content">
-										<div class="cart_text"><a href="{% url 'cart:cart_detail' %}">Корзина</a></div>
-										<div class="cart_price">0</div>
-									</div>
+
 								</div>
 							</div>
 						</div>
