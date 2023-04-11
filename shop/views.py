@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+
+from cart.forms import CartAddProductForm
 from .models import Category, Product
 
 
@@ -31,13 +33,9 @@ def product_detail(request, product_detail_slug):
     product = get_object_or_404(Product,
                                 slug=product_detail_slug,
                                 available=True)
-    context_dict = {'product': product}
+    cart_product_form = CartAddProductForm()
+    context_dict = {'product': product, 'cart_product_form': cart_product_form}
     return render(request, 'shop/product_detail.html', context_dict)
-
-
-def cart(request):
-    context_dict = {}
-    return render(request, 'shop/cart.html', context_dict)
 
 
 def wishlist(request):

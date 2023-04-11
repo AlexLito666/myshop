@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'crispy_forms',
     'shop',
+    'cart',
 
 ]
 
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CART_SESSION_ID = 'cart'
 ROOT_URLCONF = 'myshop.urls'
 
 TEMPLATES = [

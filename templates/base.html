@@ -133,10 +133,10 @@
 									<div class="cart_icon">
 										<img src="{% static "images/cart.png" %}" alt="">
 
-										<div class="cart_count"><span>10</span></div>
+										<div class="cart_count"><span>{% block cart_q %} {% endblock %}</span></div>
 									</div>
 									<div class="cart_content">
-										<div class="cart_text"><a href="{% url 'cart' %}">Корзина</a></div>
+										<div class="cart_text"><a href="{% url 'cart:cart_detail' %}">Корзина</a></div>
 										<div class="cart_price">0</div>
 									</div>
 								</div>
